@@ -25,6 +25,7 @@
 7. Open file with pub extension copy it to clipboard. 
 8. Go back to github and paste key to Key field. Put any value to Title as you want. CLick Add SSH key
 
+
 #### Register new project
 1. Create new project by clicking "new" button
 2. Fill Repository name according to your domain. Leave "add .gitignore" as none
