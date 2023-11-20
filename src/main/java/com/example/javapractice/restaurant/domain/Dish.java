@@ -4,7 +4,7 @@ package com.example.javapractice.restaurant.domain;
 public class Dish {
     private String name;
     private Double price;
-    private Integer cookTimeMinutes;
+    private Integer cookTimeMinutes; // DB: cook_time_minutes
     private String notes;
     private DishType type;
 

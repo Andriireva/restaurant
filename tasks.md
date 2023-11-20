@@ -13,3 +13,12 @@ See README.md for details
 * Add empty appropriate classes to other layers
 * Make new branch and push it to remote
 * Make pull request
+
+## Task 3
+* Add 1 SQL  that contains CREATE TABLE sql queries. 
+* There other ones that has exampls of INSERT, SELECT, UPDATE, DELETE queries
+
+Useful links:
+* Download PG SQL https://www.postgresql.org/download/windows/
+* DOwnload PG Admin https://www.pgadmin.org/
+* SQL tutorial https://www.w3schools.com/sql/
