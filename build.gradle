@@ -19,6 +19,10 @@ repositories {
 // this section response for external 3rd party libraries
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc' // SQL related library
+
+	implementation 'org.postgresql:postgresql'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

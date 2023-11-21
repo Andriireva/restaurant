@@ -4,4 +4,6 @@ package com.example.javapractice.restaurant.repository;
 // method here must be "stupid"
 // later it will have method to interact with SQL database
 public class DishRepository {
+
+
 }
