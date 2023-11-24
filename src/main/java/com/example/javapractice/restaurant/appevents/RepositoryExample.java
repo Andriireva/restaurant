@@ -7,6 +7,10 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.time.Instant;
+import java.util.Arrays;
+import java.util.List;
+
 @Component
 public class RepositoryExample {
 
@@ -23,6 +27,17 @@ public class RepositoryExample {
     public void restaurantRepositoryPlayground() {
         Restaurant restaurant = iRestaurantRepository.get(5L);
         System.out.println(restaurant.toString());
+
+        // I want to add a new Restauratt ot our storage ( data base)???
+        Restaurant restaurantToBeAddedToDataBase =
+                new Restaurant("New one", Instant.now(), "Yellow Forest street 22", 155, true, 101.54, null);
+//        List<Restaurant> restaurantsToBeAdded = Arrays.asList(
+//                new Restaurant(),
+//                new Restaurant(),
+//                new Restaurant());
+//        restaurantsToBeAdded.forEach(rest -> iRestaurantRepository.add(rest));
+        Restaurant justAddedRestaurant = iRestaurantRepository.add(restaurantToBeAddedToDataBase);
+        System.out.println("justAddedRestaurant: " + justAddedRestaurant.toString());
     }
     //
 //    public void examples() {
