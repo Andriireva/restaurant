@@ -27,3 +27,9 @@ Useful links:
 * Add implementation for appropriate repository
 * Each repository should have CRUD (create, retrieve, update, delete) operations
 * Add playground class with method marked `@EventListener(ApplicationReadyEvent.class)` that shows how each repository works
+
+## Task 5
+Add services implementation that should
+* Add, update, delete, get by id entry
+* When ever code tries to get single entry by id, it should check is resource exist by id. If no it should throw exception.
+* Add a few validation. For example that some field cannot be negative

@@ -58,4 +58,15 @@ public class Dish {
     public void setType(DishType type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "name='" + name + '\'' +
+                ", price=" + price +
+                ", cookTimeMinutes=" + cookTimeMinutes +
+                ", notes='" + notes + '\'' +
+                ", type=" + type +
+                '}';
+    }
 }

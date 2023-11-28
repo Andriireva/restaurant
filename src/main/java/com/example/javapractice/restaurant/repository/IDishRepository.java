@@ -10,4 +10,8 @@ public interface IDishRepository {
     Dish update(Long id, Dish dishToBeAdded);
     void delete(Long id);
     List<Dish> getAll(); // do not use array []
+
+    List<Dish> getAllByRestaurantId(Long id);
+
+    void deleteAllByRestaurantId(Long id);
 }
