@@ -4,6 +4,8 @@ import java.time.Instant;
 import java.util.List;
 
 public class Restaurant {
+
+    private Long id;
     private String name;
     private Instant startWorkDate;
     private String address;
@@ -91,6 +93,15 @@ public class Restaurant {
                 ", capacity=" + capacity +
                 ", allowToGo=" + allowToGo +
                 ", areaSquare=" + areaSquare +
+                ", dishes=" + dishes +
                 '}';
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

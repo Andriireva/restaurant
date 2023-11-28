@@ -3,6 +3,8 @@ package com.example.javapractice.restaurant.repository;
 import com.example.javapractice.restaurant.domain.Restaurant;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -63,7 +65,12 @@ public class RestaurantRepository implements IRestaurantRepository {
         // we want to execute an actual SQL script select * from restaurant where id = id
         // than map somehow the result to an instance of Restaurant
 
-        Restaurant restaurant = jdbcTemplate.queryForObject("select * from restaurants where id = " + id, rowMapper);
+        Restaurant restaurant = null;
+        try {
+            restaurant = jdbcTemplate.queryForObject("select * from restaurants where id = " + id, rowMapper);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
 //        jdbcTemplate.queryForObject("select * from restaurants where id = ?", rowMapper, id);
 
         return restaurant;
@@ -95,7 +102,7 @@ public class RestaurantRepository implements IRestaurantRepository {
         jdbcTemplate.update(preparedStatementCreator, generatedKeyHolder);
 
         Number keyGenerated = generatedKeyHolder.getKey();
-        Long key = keyGenerated.longValue();
+        Long key = keyGenerated.longValue(); // it returns generated id of a newly added restaurant
 
         return get(key);
 //        return null;

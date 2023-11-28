@@ -11,7 +11,7 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
 
-@Component
+//@Component
 public class RepositoryExample {
 
     private IRestaurantRepository iRestaurantRepository;
@@ -23,9 +23,9 @@ public class RepositoryExample {
 
     // @EventListener(ApplicationReadyEvent.class) it marks that this method
     // must be executed ones when application is ready
-    @EventListener(ApplicationReadyEvent.class)
+//    @EventListener(ApplicationReadyEvent.class)
     public void restaurantRepositoryPlayground() {
-        Restaurant restaurant = iRestaurantRepository.get(5L);
+        Restaurant restaurant = iRestaurantRepository.get(5000L);
         System.out.println(restaurant.toString());
 
         // I want to add a new Restauratt ot our storage ( data base)???
