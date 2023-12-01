@@ -33,3 +33,11 @@ Add services implementation that should
 * Add, update, delete, get by id entry
 * When ever code tries to get single entry by id, it should check is resource exist by id. If no it should throw exception.
 * Add a few validation. For example that some field cannot be negative
+
+## Task 6
+Add REST controllers that add, update, delete, get entries 
+Usefull links
+* https://en.wikipedia.org/wiki/HTTP 
+* https://en.wikipedia.org/wiki/HTTP_message_body
+* https://en.wikipedia.org/wiki/List_of_HTTP_status_codes 
+* https://dzone.com/articles/common-mistakes-in-rest-api-design
