@@ -36,8 +36,15 @@ Add services implementation that should
 
 ## Task 6
 Add REST controllers that add, update, delete, get entries 
-Usefull links
+Useful links
 * https://en.wikipedia.org/wiki/HTTP 
 * https://en.wikipedia.org/wiki/HTTP_message_body
 * https://en.wikipedia.org/wiki/List_of_HTTP_status_codes 
 * https://dzone.com/articles/common-mistakes-in-rest-api-design
+
+## Task 7
+Cover service layer with tests. Cover knows cases.
+Useful links:
+* https://junit.org/junit5/
+* https://site.mockito.org/ 
+* [Mockito tutorial](https://www.baeldung.com/mockito-series)

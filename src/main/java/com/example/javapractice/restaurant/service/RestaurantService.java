@@ -19,6 +19,7 @@ public class RestaurantService implements IRestaurantService {
 
     public RestaurantService(IRestaurantRepository restaurantRepository,
                              IDishRepository dishRepository) {
+        System.out.println("RestaurantService constructor is called");
         this.restaurantRepository = restaurantRepository;
         this.dishRepository = dishRepository;
     }
@@ -49,7 +50,9 @@ public class RestaurantService implements IRestaurantService {
 
         Restaurant addedRestaurant = restaurantRepository.add(restaurant);
         Long addedRestaurantId = addedRestaurant.getId();
-        restaurant.getDishes().forEach(dish -> dishRepository.add(addedRestaurantId, dish));
+        if (restaurant.getDishes() != null) {
+            restaurant.getDishes().forEach(dish -> dishRepository.add(addedRestaurantId, dish));
+        }
 
         return get(addedRestaurantId);
     }
