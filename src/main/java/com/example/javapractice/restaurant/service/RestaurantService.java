@@ -17,7 +17,7 @@ public class RestaurantService implements IRestaurantService {
     private final IRestaurantRepository restaurantRepository;
     private final IDishRepository dishRepository;
 
-    // Facade
+    // Facade. Try to look on a dissing approach called Facade
     public RestaurantService(IRestaurantRepository restaurantRepository,
                              IDishRepository dishRepository) {
         System.out.println("RestaurantService constructor is called");
