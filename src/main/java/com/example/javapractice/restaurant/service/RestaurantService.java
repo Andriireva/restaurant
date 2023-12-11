@@ -60,6 +60,10 @@ public class RestaurantService implements IRestaurantService {
 
     @Override
     public Restaurant update(Long id, Restaurant restaurant) {
+        get(id);
+        Restaurant updatedRestaurant = restaurantRepository.update(id, restaurant);
+        return get(updatedRestaurant.getId());
+
         // what to do when update restaurant.getDishes() ????
         // the answer: you should replace the dishes in case restaurant.getDishes() not empty
 
@@ -74,7 +78,7 @@ public class RestaurantService implements IRestaurantService {
         // iterate over the restaurant.getDishes() and check dish has id or not
         // if exist call dishRepository.update(dishId, dish)
 
-        return null;
+//        return null;
     }
 
     @Override
@@ -82,5 +86,10 @@ public class RestaurantService implements IRestaurantService {
         get(id);
         dishRepository.deleteAllByRestaurantId(id);
         restaurantRepository.delete(id);
+    }
+
+    @Override
+    public List<Restaurant> getAll() {
+        return restaurantRepository.getAll();
     }
 }

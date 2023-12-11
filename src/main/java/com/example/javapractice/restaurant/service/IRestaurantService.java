@@ -2,6 +2,8 @@ package com.example.javapractice.restaurant.service;
 
 import com.example.javapractice.restaurant.domain.Restaurant;
 
+import java.util.List;
+
 public interface IRestaurantService {
     Restaurant get(Long id);
     Restaurant add(Restaurant restaurant);
@@ -9,4 +11,5 @@ public interface IRestaurantService {
     void delete(Long id);
 
 
+    List<Restaurant> getAll();
 }

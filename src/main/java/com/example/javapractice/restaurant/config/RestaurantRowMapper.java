@@ -16,8 +16,12 @@ import java.sql.SQLException;
 public class RestaurantRowMapper implements RowMapper<Restaurant> {
     @Override
     public Restaurant mapRow(ResultSet rs, int rowNum) throws SQLException {
+        // ResultSet represtans a single row result
         Restaurant restaurant = new Restaurant();
         String name = rs.getString("name");
+        Long id = rs.getLong("id");
+        double price = rs.getDouble("price");
+
         restaurant.setName(name);
         return restaurant;
 //        return null;

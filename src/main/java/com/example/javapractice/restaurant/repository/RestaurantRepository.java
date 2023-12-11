@@ -17,6 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Map;
 
 // IoC - inversion of control - it means that we as developers give responsibility to create (or get ) an instance of classes
 //       instead of developer Spring will call "new" operation and will call a constructors and will "some how" initialize dependency classes
@@ -101,7 +102,8 @@ public class RestaurantRepository implements IRestaurantRepository {
         GeneratedKeyHolder generatedKeyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(preparedStatementCreator, generatedKeyHolder);
 
-        Number keyGenerated = generatedKeyHolder.getKey();
+        Number keyGenerated = generatedKeyHolder.getKey(); // simplified version
+        Map<String, Object> keys = generatedKeyHolder.getKeys(); // Map<
         Long key = keyGenerated.longValue(); // it returns generated id of a newly added restaurant
 
         return get(key);
