@@ -6,6 +6,8 @@ import com.example.javapractice.restaurant.service.IRestaurantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/api/restaurants")
 @RestController
 public class RestaurantController {
@@ -31,6 +33,14 @@ public class RestaurantController {
         return restaurantService.add(restaurant);
     }
 
+    @PutMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public Restaurant update(@PathVariable Long id,
+                             @RequestBody Restaurant restaurant) {
+        System.out.println("RestaurantController.add is called");
+        return restaurantService.update(id, restaurant);
+    }
+
     @DeleteMapping(path = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {
@@ -42,6 +52,9 @@ public class RestaurantController {
         return new Restaurant("Restaurant for test", null, null, null, null, null, null);
     }
 
-
+    @GetMapping
+    public List<Restaurant> getALl() {
+        return restaurantService.getAll();
+    }
 
 }

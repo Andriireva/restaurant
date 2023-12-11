@@ -1,6 +1,9 @@
 package com.example.javapractice.restaurant.service;
 
 import com.example.javapractice.restaurant.domain.Dish;
+import com.example.javapractice.restaurant.domain.Restaurant;
+import com.example.javapractice.restaurant.repository.IDishRepository;
+import com.example.javapractice.restaurant.repository.IRestaurantRepository;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +11,10 @@ import org.springframework.stereotype.Service;
 //
 @Service
 public class DishService implements IDishService {
+
+    private IRestaurantRepository restaurantRepository;
+    private IDishRepository dishRepository;
+
     @Override
     public Dish getOne(Long id) {
         return null;
@@ -15,6 +22,12 @@ public class DishService implements IDishService {
 
     @Override
     public Dish add(Long restaurantId, Dish dish) {
-        return null;
+        Restaurant restaurant = restaurantRepository.get(restaurantId);
+//        if (restaurant == null) {
+//            throw new ParentResoruceNotFound();
+//        }
+        Dish addedDish = dishRepository.add(restaurantId, dish);
+
+        return addedDish;
     }
 }

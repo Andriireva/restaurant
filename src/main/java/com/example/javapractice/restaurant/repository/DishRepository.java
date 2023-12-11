@@ -81,7 +81,7 @@ public class DishRepository implements IDishRepository {
 
     @Override
     public List<Dish> getAllByRestaurantId(Long restaurantId) {
-        List<Dish> dishes = jdbcTemplate.query("select * from dishes where restaurant_id = ?", rowMapper, restaurantId);
+        List<Dish> dishes = jdbcTemplate.query(" select * from dishes where restaurant_id = ? ", rowMapper, restaurantId);
         return dishes;
     }
 

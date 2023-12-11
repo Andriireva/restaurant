@@ -5,7 +5,7 @@ import com.example.javapractice.restaurant.domain.Restaurant;
 import java.util.List;
 
 public interface IRestaurantRepository {
-    Restaurant get(Long id); // get dish by dish related table id
+    Restaurant get(Long id); // get Restaurant by id or return null
     Restaurant add(Restaurant restaurant);
     Restaurant update(Long id, Restaurant updatedRestaurant);
     void delete(Long id);

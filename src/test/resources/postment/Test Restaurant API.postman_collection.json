@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "d23dc9f6-0f53-45a9-96ce-5b6959961382",
+		"name": "Test Restaurant API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30194534"
+	},
+	"item": [
+		{
+			"name": "create restaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful create restaurant\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							"",
+							"pm.test(\"Check that response id is not null\", function () {",
+							"    var jsonData = pm.response.json(); // ",
+							"    pm.expect(jsonData.id).to.be.not.null",
+							"    pm.collectionVariables.set(\"created_id\", jsonData.id);",
+							"});",
+							"",
+							"pm.test(\"Check that restaurant dishes lenght is 2\", function () {",
+							"    var jsonData = pm.response.json(); // ",
+							"    pm.expect(jsonData.dishes.length).to.be.eql(2)",
+							"});",
+							"",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"my new one\",\n    \"startWorkDate\": \"2017-11-06T05:52:01.053218Z\",\n    \"address\": \"new street ever\",\n    \"capacity\": 33,\n    \"allowToGo\": true,\n    \"areaSquare\": 45.123,\n    \"dishes\": [\n        {\n            \"name\": \"cool dish\",\n            \"price\": 44.12,\n            \"cookTimeMinutes\": 3,\n            \"notes\": \"---\",\n            \"type\": \"FOOD\"\n        },\n        {\n            \"name\": \"canotheredish\",\n            \"price\": 66.12,\n            \"cookTimeMinutes\": 77,\n            \"notes\": \"+++++\",\n            \"type\": \"SNACK\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/api/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"api",
+						"restaurants"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Get restaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check that newly created restaurant exist\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/restaurant/api/restaurants/{{created_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"api",
+						"restaurants",
+						"{{created_id}}"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Update restaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Retaurant successfuly updated\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Check that response name is updated\", function () {",
+							"    var jsonData = pm.response.json(); // ",
+							"    pm.expect(jsonData.name).to.be.eql(\"my name UPDATEED\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"my name UPDATEED\",\n    \"startWorkDate\": \"2018-11-06T05:52:01.053218Z\",\n    \"address\": \"new street ever UPDATEED\",\n    \"capacity\": 55,\n    \"allowToGo\": false,\n    \"areaSquare\": 66.77\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/api/restaurants/{{created_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"api",
+						"restaurants",
+						"{{created_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete restaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Delete is successfull\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/restaurant/api/restaurants/{{created_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"api",
+						"restaurants",
+						"{{created_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get delete restaurant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check that preveiously create restaurant\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"",
+							"pm.test(\"Check that response message is shown accordiannly\", function () {",
+							"    var jsonData = pm.response.json(); // ",
+							"",
+							"    var createdId = pm.collectionVariables.get(\"created_id\");",
+							"    pm.expect(jsonData.message).to.be.eql(\"Restaurant with id \" + createdId + \" is not found\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/restaurant/api/restaurants/{{created_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"api",
+						"restaurants",
+						"{{created_id}}"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Get all restaurants",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/restaurant/api/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"api",
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create restaurant negative capacity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check that response is 409\", function () {",
+							"    pm.response.to.have.status(409);",
+							"});",
+							"",
+							"pm.test(\"Check that response name is updated\", function () {",
+							"    var jsonData = pm.response.json(); // ",
+							"    pm.expect(jsonData.message).to.be.eql(\"restaurant capacity must not be negative\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"my new one\",\n    \"startWorkDate\": \"2017-11-06T05:52:01.053218Z\",\n    \"address\": \"new street ever\",\n    \"capacity\": -100,\n    \"allowToGo\": true,\n    \"areaSquare\": 45.123\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/restaurant/api/restaurants",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurant",
+						"api",
+						"restaurants"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "created_id",
+			"value": ""
+		}
+	]
+}
