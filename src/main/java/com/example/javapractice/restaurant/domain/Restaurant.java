@@ -12,6 +12,8 @@ public class Restaurant {
     private Integer capacity;
     private Boolean allowToGo;
     private Double areaSquare;
+
+    private String notes;
     private List<Dish> dishes;
 
     public Restaurant(String name, Instant startWorkDate, String address,
