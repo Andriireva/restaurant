@@ -48,3 +48,14 @@ Useful links:
 * https://junit.org/junit5/
 * https://site.mockito.org/ 
 * [Mockito tutorial](https://www.baeldung.com/mockito-series)
+
+## Task 8
+Add postman collection to resource/postman folder
+Useful links:
+* https://learning.postman.com/docs/writing-scripts/script-references/test-examples/
+
+## Task 9
+Add sql migration system flyway. Add (or modify existing) script that cretes table
+Useful links:
+* https://www.baeldung.com/database-migrations-with-flyway
+* [SQL idempotancy](https://medium.com/full-stack-architecture/idempotent-sql-ddl-ca354a1eee62)
