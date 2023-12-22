@@ -59,3 +59,10 @@ Add sql migration system flyway. Add (or modify existing) script that cretes tab
 Useful links:
 * https://www.baeldung.com/database-migrations-with-flyway
 * [SQL idempotancy](https://medium.com/full-stack-architecture/idempotent-sql-ddl-ca354a1eee62)
+
+## Task 10
+Add spring data to project. Use JPA and hibernate repositories.
+Useful links:
+* [Spring data](https://spring.io/guides/gs/accessing-data-jpa/)
+* [Learn JPA & Hibernate](https://www.baeldung.com/learn-jpa-hibernate)
+* 
