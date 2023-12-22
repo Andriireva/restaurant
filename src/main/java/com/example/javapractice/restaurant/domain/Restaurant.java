@@ -1,19 +1,29 @@
 package com.example.javapractice.restaurant.domain;
 
+import jakarta.persistence.*;
+
 import java.time.Instant;
 import java.util.List;
 
+@Entity
+@Table(name = "restaurants") // refers to a table name in data base
 public class Restaurant {
 
+    @Id
+    // Code bellow refers to an actual postgres sequence of restaurants id related sequence
+    @GeneratedValue(generator = "restaurants_generator")
+    @SequenceGenerator(name = "restaurants_generator", sequenceName = "restaurants_id_seq", allocationSize = 1)
+//    @GeneratedValue
     private Long id;
     private String name;
-    private Instant startWorkDate;
+
+    private Instant startWorkDate; //
     private String address;
     private Integer capacity;
     private Boolean allowToGo;
     private Double areaSquare;
 
-    private String notes;
+    @Transient // excluding this field from sql queries
     private List<Dish> dishes;
 
     public Restaurant(String name, Instant startWorkDate, String address,

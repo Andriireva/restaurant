@@ -6,6 +6,7 @@ import com.example.javapractice.restaurant.exceptions.ResourceIsNotFoundExceptio
 import com.example.javapractice.restaurant.exceptions.RestaurantException;
 import com.example.javapractice.restaurant.repository.IDishRepository;
 import com.example.javapractice.restaurant.repository.IRestaurantRepository;
+import com.example.javapractice.restaurant.repository.RestaurantRepo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,6 +18,7 @@ import org.mockito.invocation.InvocationOnMock;
 
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -41,6 +43,9 @@ class RestaurantServiceTest {
     private IRestaurantRepository restaurantRepository;
     @Mock // Mock dependency
     private IDishRepository dishRepository;
+
+    @Mock
+    private RestaurantRepo restaurantRepo;
 
     @BeforeEach // Junit annotation
     void setUp() {
@@ -70,8 +75,8 @@ class RestaurantServiceTest {
     }
 
     @Test
-    void getRestaurantsWithoutDishes() {
-        Mockito.when(restaurantRepository.get(55L)).thenReturn(new Restaurant());
+    void getRestaurantWithoutDishes() {
+        Mockito.when(restaurantRepo.findById(55L)).thenReturn(Optional.of(new Restaurant()));
 
         Restaurant restaurant = restaurantService.get(55L);
 
