@@ -65,4 +65,11 @@ Add spring data to project. Use JPA and hibernate repositories.
 Useful links:
 * [Spring data](https://spring.io/guides/gs/accessing-data-jpa/)
 * [Learn JPA & Hibernate](https://www.baeldung.com/learn-jpa-hibernate)
-* 
+
+## Task 11 
+Add security to your project. There should be 3 authorities: DEFAULT, EDITOR, ADMIN. 
+* DEFAULT can use only GET requests. 
+* EDITOR only post, put and delete. 
+* ADMIN can do any requests
+Useful links:
+* https://docs.spring.io/spring-security/reference/index.html
