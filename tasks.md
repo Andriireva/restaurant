@@ -73,3 +73,12 @@ Add security to your project. There should be 3 authorities: DEFAULT, EDITOR, AD
 * ADMIN can do any requests
 Useful links:
 * https://docs.spring.io/spring-security/reference/index.html
+
+## Task 12
+Add audit to your project. There should be added 4 fields to domain and appriate SQL tables
+* Created by - username who added entry
+* Modified by - username who modified entry
+* Create at - the date when entry was added
+* Modified at - the date when entry was changed
+  Useful links:
+* https://docs.spring.io/spring-data/jpa/reference/auditing.html

@@ -4,10 +4,11 @@ import jakarta.persistence.*;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.function.Predicate;
 
 @Entity
 @Table(name = "restaurants") // refers to a table name in data base
-public class Restaurant {
+public class Restaurant extends AbstractAuditable {
 
     @Id
     // Code bellow refers to an actual postgres sequence of restaurants id related sequence

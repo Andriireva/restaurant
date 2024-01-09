@@ -4,9 +4,11 @@ package com.example.javapractice.restaurant.domain;
 
 import jakarta.persistence.*;
 
+import java.time.Instant;
+
 @Entity
 @Table(name = "dishes")
-public class Dish {
+public class Dish extends AbstractAuditable {
 
     @Id
     // Code bellow refers to an actual postgres sequence of restaurants id related sequence

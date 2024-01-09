@@ -8,6 +8,7 @@ import com.example.javapractice.restaurant.repository.RestaurantRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -83,9 +84,14 @@ public class RestaurantService implements IRestaurantService {
     @Override
     @Transactional
     public Restaurant update(Long id, Restaurant restaurant) {
-        get(id);
-        Restaurant updatedRestaurant = restaurantRepository.update(id, restaurant);
-        return get(updatedRestaurant.getId());
+//        get(id);
+        restaurantRepo.findById(id).orElse(null);
+//        Restaurant updatedRestaurant = restaurantRepository.update(id, restaurant);
+//        return get(updatedRestaurant.getId());
+        restaurant.setId(id);
+        restaurantRepo.save(restaurant);
+        return restaurantRepo.findById(id).orElse(null);
+
 
         // what to do when update restaurant.getDishes() ????
         // the answer: you should replace the dishes in case restaurant.getDishes() not empty
