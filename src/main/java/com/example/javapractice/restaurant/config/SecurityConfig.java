@@ -43,9 +43,15 @@ public class SecurityConfig {
                 .password("$2a$12$0ny4A3Q2B/WpeY3DPW.4Ye4nfbE7BhqHyrcIrV6R66fqDO444ncyW") // secret
                 .authorities(USER_AUTHORITY, ADMIN_AUTHORITY)
                 .build();
+
+        UserDetails admin2 = User.builder()
+                .username("foxxy") //
+                .password("$2a$12$0ny4A3Q2B/WpeY3DPW.4Ye4nfbE7BhqHyrcIrV6R66fqDO444ncyW") // secret
+                .authorities(USER_AUTHORITY, ADMIN_AUTHORITY)
+                .build();
         // This is not ready for Production class. it is just for simple test
         // In real case there should be a service class, in service layer that load data from storage (e.g. SQL and appropriate table)
-        return new InMemoryUserDetailsManager(user1, admin);
+        return new InMemoryUserDetailsManager(user1, admin, admin2);
     }
 
     // Add a component that will identify user by http provide security data
