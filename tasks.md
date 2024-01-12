@@ -82,3 +82,11 @@ Add audit to your project. There should be added 4 fields to domain and appriate
 * Modified at - the date when entry was changed
   Useful links:
 * https://docs.spring.io/spring-data/jpa/reference/auditing.html
+
+## Task 13
+Add JMS listener that listen an event with message of ids for your child entries.
+When ever application receives such message it should delete all existing child entries by that ids.
+
+Useful links:
+* [Download Artemis](https://activemq.apache.org/components/artemis/download/)
+* https://spring.io/guides/gs/messaging-jms/

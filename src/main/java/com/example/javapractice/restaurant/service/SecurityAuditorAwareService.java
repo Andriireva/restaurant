@@ -13,8 +13,6 @@ public class SecurityAuditorAwareService implements AuditorAware<String> {
     @Override
     public Optional<String> getCurrentAuditor() {
 
-        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
         return Optional.ofNullable(SecurityContextHolder.getContext())
                 .map(securityContext -> securityContext.getAuthentication())
                 .map(authentication -> authentication.getPrincipal())
