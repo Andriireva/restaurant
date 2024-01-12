@@ -3,12 +3,12 @@ package com.example.javapractice.restaurant.service;
 import com.example.javapractice.restaurant.domain.Restaurant;
 import com.example.javapractice.restaurant.exceptions.ArgumentException;
 import com.example.javapractice.restaurant.exceptions.ResourceIsNotFoundException;
+import com.example.javapractice.restaurant.jms.JmsRestaurantSender;
 import com.example.javapractice.restaurant.repository.*;
 import com.example.javapractice.restaurant.repository.RestaurantRepo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
 import java.util.List;
 
 @Service
@@ -18,14 +18,17 @@ public class RestaurantService implements IRestaurantService {
     private final IDishRepository dishRepository;
     private final RestaurantRepo restaurantRepo;
     private final DishRepo dishRepo;
+    private final JmsRestaurantSender restaurantSender;
 
 //    @Autowired
     // Facade. Try to look on a dissing approach called Facade
     public RestaurantService(IRestaurantRepository restaurantRepository,
                              IDishRepository dishRepository,
                              RestaurantRepo restaurantRepo,
-                             DishRepo dishRepo) {
+                             DishRepo dishRepo,
+                             JmsRestaurantSender restaurantSender) {
         this.dishRepo = dishRepo;
+        this.restaurantSender = restaurantSender;
         System.out.println("RestaurantService constructor is called ONE");
         System.out.println("RestaurantRepo " + restaurantRepo.toString());
 
@@ -78,7 +81,9 @@ public class RestaurantService implements IRestaurantService {
 //        }
 //        return get(addedRestaurantId);
 
-        return restaurantRepo.save(restaurant);
+        Restaurant saved = restaurantRepo.save(restaurant);
+        restaurantSender.sendRestaurantAddedMessage(saved);
+        return saved;
     }
 
     @Override
